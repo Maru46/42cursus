@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klimrung <klimrung@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 15:04:46 by klimrung          #+#    #+#             */
-/*   Updated: 2024/03/01 14:40:14 by klimrung         ###   ########.fr       */
+/*   Created: 2024/02/23 01:29:30 by klimrung          #+#    #+#             */
+/*   Updated: 2024/02/23 01:55:44 by klimrung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_putstr_fd(char *s, int fd)
 {
-	t_list	*node;
-
-	if (!lst || !del)
+	if (!s)
 		return ;
-	while (*lst)
-	{
-		node = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = node;
-	}
-	lst = NULL;
+	write (fd, s, ft_strlen(s));
 }

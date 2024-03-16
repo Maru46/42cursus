@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klimrung <klimrung@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 15:04:46 by klimrung          #+#    #+#             */
-/*   Updated: 2024/03/01 14:40:14 by klimrung         ###   ########.fr       */
+/*   Created: 2024/02/21 15:56:14 by klimrung          #+#    #+#             */
+/*   Updated: 2024/02/21 15:57:18 by klimrung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	t_list	*node;
+	unsigned char	*str1;
+	unsigned char	*str2;
+	size_t			i;
 
-	if (!lst || !del)
-		return ;
-	while (*lst)
+	str1 = (unsigned char *)s1;
+	str2 = (unsigned char *)s2;
+	i = 0;
+	while (i < n)
 	{
-		node = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = node;
+		if (str1[i] != str2[i])
+			return (str1[i] - str2[i]);
+		i++;
 	}
-	lst = NULL;
+	return (0);
 }

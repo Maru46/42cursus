@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klimrung <klimrung@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 15:04:46 by klimrung          #+#    #+#             */
-/*   Updated: 2024/03/01 14:40:14 by klimrung         ###   ########.fr       */
+/*   Created: 2024/02/21 18:28:55 by klimrung          #+#    #+#             */
+/*   Updated: 2024/02/21 18:49:36 by klimrung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	t_list	*node;
+	char	*str;
+	size_t	len;
 
-	if (!lst || !del)
-		return ;
-	while (*lst)
-	{
-		node = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = node;
-	}
-	lst = NULL;
+	if (!s1 || !s2)
+		return (NULL);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s1, len + 1);
+	ft_strlcat(str, s2, len + 1);
+	return (str);
 }

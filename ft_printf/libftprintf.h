@@ -1,28 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: klimrung <klimrung@student.42bangkok.co    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/27 15:04:46 by klimrung          #+#    #+#             */
-/*   Updated: 2024/03/01 14:40:14 by klimrung         ###   ########.fr       */
+/*   Created: 2024/03/04 15:00:19 by klimrung          #+#    #+#             */
+/*   Updated: 2024/03/13 17:00:54 by klimrung         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
+# include "libft/libft.h"
+# include <stdarg.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
-{
-	t_list	*node;
+int	ft_printf(const char *format, ...);
+int	treat_n_print(char format, va_list *args);
+int	ft_putchar(int c);
+int	ft_putstr(char *s);
+int	ft_putnbr(int num);
+int	ft_putuint(unsigned int u);
+int	ft_puthex(unsigned int hex, int is_upper);
+int	ft_putptr(void *ptr, int first);
 
-	if (!lst || !del)
-		return ;
-	while (*lst)
-	{
-		node = (*lst)->next;
-		ft_lstdelone(*lst, del);
-		*lst = node;
-	}
-	lst = NULL;
-}
+#endif
